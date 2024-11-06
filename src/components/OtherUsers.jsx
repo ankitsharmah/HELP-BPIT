@@ -2,7 +2,7 @@ import React from 'react'
 import OtherUser from './OtherUser';
 import useGetOtherUsers from '../hooks/useGetOtherUsers';
 import {useSelector} from "react-redux";
-import OpenForum from './Openforum';
+import OpenForum from './OpenForum';
 
 
 const OtherUsers = () => {
