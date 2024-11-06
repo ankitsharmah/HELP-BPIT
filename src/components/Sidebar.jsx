@@ -39,7 +39,7 @@ const Sidebar = () => {
         }
     }
     return (
-        !(selectedUser || selectedOpenForum) && <div className='border-r border-slate-500 p-4 outline outline-1 outline-red-600 flex flex-col'>
+         <div className='border-r border-slate-500 p-4 outline outline-1 outline-red-600 flex flex-col'>
             <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2'>
                 <input
                     value={search}

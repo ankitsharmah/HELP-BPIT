@@ -64,9 +64,11 @@ import Signup from "./components/Signup";
 import HomePage from "./components/HomePage";
 import { BASE_URL } from "./main";
 import { useDispatch, useSelector } from "react-redux";
-import { setOnlineUsers } from "./redux/userSlice";
+import { setOnlineUsers, setTyping } from "./redux/userSlice";
 import { setSocket } from "./redux/socketSlice";
 import { setMessages, setOpenMessages } from "./redux/messageSlice";
+import MessageContainer from "./components/MessageContainer";
+import OpenChatForum from "./components/OpenChatForum";
 
 function App() {
     const { authUser } = useSelector(store => store.user);
@@ -84,23 +86,19 @@ function App() {
             socketio.on('getOnlineUsers', (onlineUsers) => {
                 dispatch(setOnlineUsers(onlineUsers));
             });
+            socketio.on("typing", (data) => {
+                // Handle typing status change for a particular user
+                const { senderId, typing } = data;
+                console.log("typing in jsx ",typing)
+                dispatch(setTyping(typing));
+            });
 
-            // Listen for one-to-one messages
-            // socketio.on("newPrivateMessage", (newMessage) => {
-            //   console.log("private ",newMessage)
-
-            //     dispatch(setMessages((prevMessages) => [...prevMessages, newMessage]));
-            // });
-
-            // Listen for open chat messages
-            // socketio.on("openChatMessage", (newOpenMessage) => {
-            //   console.log("open chat message",newOpenMessage)
-            //     dispatch(setOpenMessages((prevOpenMessages) => [...prevOpenMessages, newOpenMessage]));
-            // });
+           
 
             // Cleanup on unmount
             return () => {
                 socketio.off("getOnlineUsers");
+                socketio.off("typing");
                 socketio.off("newPrivateMessage");
                 socketio.off("openChatMessage");
                 socketio.close();
@@ -111,13 +109,15 @@ function App() {
                 dispatch(setSocket(null));
             }
         }
-    }, [authUser, dispatch]);
+    }, [authUser, dispatch,authUser]);
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/one-to-one" element={<MessageContainer />} />
+                <Route path="/open-chat" element={<OpenChatForum />} />
                 <Route path="/" element={<HomePage />} />
             </Routes>
         </BrowserRouter>

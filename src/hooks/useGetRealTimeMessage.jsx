@@ -1,79 +1,111 @@
+// // import { useEffect } from "react";
+// // import {useSelector, useDispatch} from "react-redux";
+// // import { setMessages, setOpenMessages } from "../redux/messageSlice";
+
+// // const useGetRealTimeMessage = () => {
+// //     const {socket} = useSelector(store=>store.socket);
+// //     const {messages,openChats} = useSelector(store=>store.message);
+// //     const dispatch = useDispatch();
+// //     useEffect(()=>{
+// //         socket?.on("newPrivateMessage", (newMessage)=>{
+            
+// //             console.log("realtime message ",newMessage)
+// //             dispatch(setMessages([...messages, newMessage]));
+// //         });
+// //         socket?.on("openChatMessage", (msg)=>{
+            
+// //             console.log("realtime message ",msg)
+// //             const upmsgs = [...openChats?.messages, msg]
+// //             const updatedOpenChats = {...openChats ,messages:upmsgs}
+// //             dispatch(setOpenMessages(updatedOpenChats));
+// //         });
+
+// //         return () =>{ socket?.off("newPrivateMessage");
+// //             socket?.off("openChatMessage")
+// //         };
+// //     },[setMessages, messages]);
+// // };
+// // export default useGetRealTimeMessage;
+
 // import { useEffect } from "react";
-// import {useSelector, useDispatch} from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 // import { setMessages, setOpenMessages } from "../redux/messageSlice";
 
 // const useGetRealTimeMessage = () => {
-//     const {socket} = useSelector(store=>store.socket);
-//     const {messages,openChats} = useSelector(store=>store.message);
+//     const { socket } = useSelector(store => store.socket);
+//     const { messages, openChats } = useSelector(store => store.message);
 //     const dispatch = useDispatch();
-//     useEffect(()=>{
-//         socket?.on("newPrivateMessage", (newMessage)=>{
-            
-//             console.log("realtime message ",newMessage)
-//             dispatch(setMessages([...messages, newMessage]));
-//         });
-//         socket?.on("openChatMessage", (msg)=>{
-            
-//             console.log("realtime message ",msg)
-//             const upmsgs = [...openChats?.messages, msg]
-//             const updatedOpenChats = {...openChats ,messages:upmsgs}
-//             dispatch(setOpenMessages(updatedOpenChats));
-//         });
 
-//         return () =>{ socket?.off("newPrivateMessage");
-//             socket?.off("openChatMessage")
-//         };
-//     },[setMessages, messages]);
+//     useEffect(() => {
+//         if (socket) {
+        
+//             socket?.on("newPrivateMessage", (newMessage) => {
+//                 // console.log("real-time message received");
+                
+//                 // Dispatch using a function to access the latest state
+//                 const updatedMessage = [...messages,newMessage];
+//                 console.log("real ",updatedMessage)
+//                 dispatch(setMessages(updatedMessage));
+//             });
+            
+            
+
+//             // Open chat message listener
+//             socket?.on("openChatMessage", (msg) => {
+//                 const updatedOpenChats = {
+//                     ...openChats,
+//                     messages: [...openChats?.messages, msg]
+//                 };
+//                 console.log("real open",updatedOpenChats)
+
+//                 dispatch(setOpenMessages(updatedOpenChats));
+//             });
+
+//             // Cleanup listeners on unmount or when socket changes
+//             return () => {
+//                 socket.off("newPrivateMessage");
+//                 socket.off("openChatMessage");
+//             };
+//         }
+//     }, [socket, dispatch, openChats,messages]);
 // };
+
 // export default useGetRealTimeMessage;
 
-import { useEffect } from "react";
+
+
 import { useDispatch, useSelector } from "react-redux";
 import { setMessages, setOpenMessages } from "../redux/messageSlice";
+import store from "../redux/store";  // Import the Redux store directly
+
+let listenersAdded = false;
 
 const useGetRealTimeMessage = () => {
     const { socket } = useSelector(store => store.socket);
-    const { messages, openChats } = useSelector(store => store.message);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if (socket) {
-            // Private message listener
-            // socket.on("newPrivateMessage", (newMessage) => {
-            //     console.log("this is old msgs ",messages);
-            //     console.log("new msg is ",newMessage)
-            //     dispatch(setMessages([...messages, newMessage]));
-            //     console.log("on proivate", messages)
-            // });
-            socket?.on("newPrivateMessage", (newMessage) => {
-                // console.log("real-time message received");
-                
-                // Dispatch using a function to access the latest state
-                const updatedMessage = [...messages,newMessage];
-                console.log("real ",updatedMessage)
-                dispatch(setMessages(updatedMessage));
-            });
-            
-            
+    if (socket && !listenersAdded) {
+        listenersAdded = true;
 
-            // Open chat message listener
-            socket?.on("openChatMessage", (msg) => {
-                const updatedOpenChats = {
-                    ...openChats,
-                    messages: [...openChats?.messages, msg]
-                };
-                console.log("real open",updatedOpenChats)
+        // Listener for private messages
+        socket.on("newPrivateMessage", (newMessage) => {
+            const currentMessages = store.getState().message.messages;  // Get latest state
+            const updatedMessages = [...currentMessages, newMessage];
+            // console.log("real-time message", updatedMessages);
+            dispatch(setMessages(updatedMessages));
+        });
 
-                dispatch(setOpenMessages(updatedOpenChats));
-            });
-
-            // Cleanup listeners on unmount or when socket changes
-            return () => {
-                socket.off("newPrivateMessage");
-                socket.off("openChatMessage");
+        // Listener for open chat messages
+        socket.on("openChatMessage", (msg) => {
+            const currentOpenChats = store.getState().message.openChats;  // Get latest state
+            const updatedOpenChats = {
+                ...currentOpenChats,
+                messages: [...(currentOpenChats?.messages || []), msg]
             };
-        }
-    }, [socket, dispatch, openChats,messages]);
+            // console.log("open chat message", updatedOpenChats);
+            dispatch(setOpenMessages(updatedOpenChats));
+        });
+    }
 };
 
 export default useGetRealTimeMessage;

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import {useSelector} from "react-redux";
+import { BASE_URL } from '../main';
 
 const OpenForumMessage = ({message}) => {
     const scroll = useRef();
@@ -18,7 +19,7 @@ const OpenForumMessage = ({message}) => {
         <div ref={scroll} className={`chat ${message.senderId?._id === authUser?.user._id ? 'chat-end' : 'chat-start'}`}>
             <div className="chat-image avatar">
                 <div className="w-10 rounded-full">
-                    <img alt="Tailwind CSS chat bubble component" src={message?.senderId._id === authUser?.user._id ? authUser?.user.profilePic  : message?.senderId.profilePic } />
+                <img alt="User Avatar" src={message?.senderId === authUser?.user._id ? `${BASE_URL}/api/avatar?name=${authUser?.user?.nickName}` : `${BASE_URL}/api/avatar?name=${message.senderId.nickName}`} />
                 </div>
             </div>
             <div className="chat-header">

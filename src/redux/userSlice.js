@@ -3,6 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name:"user",
     initialState:{
+        isTyping: false,
         authUser:null,
         otherUsers:null,
         selectedUser:null,
@@ -19,6 +20,10 @@ const userSlice = createSlice({
         setSelectedUser:(state,action)=>{
             state.selectedUser = action.payload;
         },
+        
+        setTyping:(state,action)=>{
+            state.isTyping = action.payload;
+        },
         setOnlineUsers:(state,action)=>{
             state.onlineUsers = action.payload;
         },
@@ -30,5 +35,5 @@ const userSlice = createSlice({
         },
       
 });
-export const {setAuthUser,setOtherUsers,setSelectedUser,setOnlineUsers,setSelectedOpenForum} = userSlice.actions;
+export const {setAuthUser,setOtherUsers,setTyping,setSelectedUser,setOnlineUsers,setSelectedOpenForum} = userSlice.actions;
 export default userSlice.reducer;

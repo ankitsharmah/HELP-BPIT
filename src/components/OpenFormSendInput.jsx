@@ -101,7 +101,7 @@ function OpenFormSendInput() {
             // Optimistically update the local state
             const upmsgs = [...openChats?.messages, res?.data?.newMsg];
             const updatedOpenChats = { ...openChats, messages: upmsgs };
-            console.log("Sent open message: ", updatedOpenChats);
+            // console.log("Sent open message: ", updatedOpenChats);
     
             // Dispatch the updated messages to the Redux store
             dispatch(setOpenMessages(updatedOpenChats));
