@@ -8,16 +8,17 @@ const Messages = () => {
     useGetMessages();
     useGetRealTimeMessage();
     const { selectedUser } = useSelector(store => store.user);
-    const { messages } = useSelector(store => store.message);
+    const { messages ,isLoading} = useSelector(store => store.message);
 
     // Access the messages for the selected user
     // const userMessages = messages[selectedUser?._id] || []; // Default to empty array if no messages found
 
     return (
-        <div className='px-4 md:h-[550px] h-[500px] w-[98%] md:flex-1 overflow-y-scroll '>
-            {messages?.map((message) => (
+        <div className={isLoading? "h-[97vh] w-[95%] flex items-center justify-center":'px-4 md:h-[550px] h-[500px] w-[98%] md:flex-1 overflow-y-scroll '}>
+            {!isLoading ? messages?.map((message) => (
                 <Message key={message._id} message={message} />
-            ))}
+            )):<div className="loader-chat  text-white flex items-center justify-center"></div>
+}
         </div>
     );
 };

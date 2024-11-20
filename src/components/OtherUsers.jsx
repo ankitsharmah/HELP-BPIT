@@ -7,7 +7,7 @@ import OpenForum from './OpenForum';
 
 const OtherUsers = () => {
     // my custom hook
-    useGetOtherUsers();
+    // useGetOtherUsers();
     const {otherUsers} = useSelector(store=>store.user);
     const {authUser} = useSelector(store=>store.user);
     const {openChats} = useSelector(store=>store.message)

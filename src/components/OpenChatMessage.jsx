@@ -17,7 +17,7 @@ const OpenChatMessage = () => {
     // const userMessages = messages[selectedUser?._id] || []; // Default to empty array if no messages found
 // console.log(openChats)
     return (
-        <div className='px-4 md:h-[550px] h-[500px] w-[98%] md:flex-1 overflow-y-scroll '>
+        <div className='px-4 md:h-[550px]    overflow-y-scroll '>
             {openChats.messages?.map((message) => (
                 <OpenForumMessage key={message._id} message={message} />
             ))}

@@ -88,7 +88,7 @@ function OpenFormSendInput() {
     
             // Save the message to the database
             const res = await axios.post(
-                `${BASE_URL}/api/v1/messages/openform/send/${authUser.user._id}`,
+                `${BASE_URL}/api/v1/messages/openform/send/${authUser._id}`,
                 { content },
                 {
                     headers: {

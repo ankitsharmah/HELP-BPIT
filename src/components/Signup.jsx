@@ -51,8 +51,8 @@ const Signup = () => {
   }
 
   return (
-    <div className="min-w-96 mx-auto">
-      <div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100'>
+    <div className="min-w-96 md:w-[40%] h-[81vh] flex items-center  mx-auto">
+      <div className='w-full p-6 rounded-lg shadow-md bg-gray-800  border border-gray-100'>
         <h1 className='text-3xl font-bold text-center'>Signup</h1>
         <form onSubmit={onSubmitHandler} action="">
 
@@ -127,7 +127,7 @@ const Signup = () => {
 
           <p className='text-center my-2'>Already have an account? <Link to="/login"> login </Link></p>
           <div>
-            <button type='submit' className='btn btn-block btn-sm mt-2 border border-slate-700'>Signup</button>
+            <button type='submit' className='btn btn-block bg-red-600 btn-sm mt-2 border border-slate-700'>Signup</button>
           </div>
         </form>
       </div>

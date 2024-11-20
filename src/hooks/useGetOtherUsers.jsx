@@ -3,46 +3,52 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setOtherUsers } from '../redux/userSlice';
 import { BASE_URL } from '../main';
-import { setOpenMessages } from '../redux/messageSlice';
+import { setIsLoading, setOpenMessages } from '../redux/messageSlice';
 
 const useGetOtherUsers = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchOtherUsers = async () => {
-            try {
-                axios.defaults.withCredentials = true;
-                const res = await axios.get(`${BASE_URL}/api/v1/user`,{
-                    headers:{
-                        Authorization : `Bearer ${localStorage.getItem("token")}`
-                    }
-                });
-                // store
-                // console.log("other users -> ",res);
-                dispatch(setOtherUsers(res.data));
-            } catch (error) {
-                console.log(error);
-            }
-        }
+        console.log("useGetOtherUsers: Hook executed");
+
+        // const fetchOtherUsers = async () => {
+        //     try {
+        //         console.log("Fetching other users...");
+        //         axios.defaults.withCredentials = true;
+        //         const res = await axios.get(`${BASE_URL}/api/v1/user`, {
+        //             headers: {
+        //                 Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //             },
+        //         });
+        //         console.log("Fetched other users:", res.data);
+        //         dispatch(setOtherUsers(res.data));
+        //     } catch (error) {
+        //         console.error("Error fetching other users:", error);
+        //     }
+        // };
+
         const fetchOpenForum = async () => {
             try {
+                console.log("doing true")
+                dispatch(setIsLoading(true))
+                console.log("Fetching open forum messages...");
                 axios.defaults.withCredentials = true;
-                const res = await axios.get(`${BASE_URL}/api/v1/messages/openform`,{
-                    headers:{
-                        Authorization : `Bearer ${localStorage.getItem("token")}`
-                    }
+                const res = await axios.get(`${BASE_URL}/api/v1/messages/openform`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
                 });
-                // store
-                console.log(res)
-               dispatch(setOpenMessages(res.data.openChatmessages))
+                console.log("Fetched open forum messages:", res.data.openChatmessages);
+                dispatch(setOpenMessages(res.data.openChatmessages));
+                dispatch(setIsLoading(false))
             } catch (error) {
-                console.log(error);
+                console.error("Error fetching open forum messages:", error);
             }
-        }
+        };
+
         fetchOpenForum();
-        fetchOtherUsers();
-    }, [])
+        // fetchOtherUsers();
+    }, []); // Include dispatch as a dependency
+};
 
-}
-
-export default useGetOtherUsers
+export default useGetOtherUsers;

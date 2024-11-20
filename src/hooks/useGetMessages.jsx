@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setMessages } from '../redux/messageSlice';
+import { setIsLoading, setMessages } from '../redux/messageSlice';
 import { BASE_URL } from '../main';
 
 const useGetMessages = () => {
@@ -14,6 +14,7 @@ const useGetMessages = () => {
         if (!selectedUser?._id) return; // Only fetch if a user is selected
 
         const fetchMessages = async () => {
+            dispatch(setIsLoading(true));
             try {
                 const res = await axios.get(`${BASE_URL}/api/v1/messages/${selectedUser._id}`, {
                     headers: {
@@ -30,6 +31,9 @@ const useGetMessages = () => {
                 }
             } catch (error) {
                 console.error("Error fetching messages:", error);
+            }finally{
+            dispatch(setIsLoading(false));
+
             }
         };
 

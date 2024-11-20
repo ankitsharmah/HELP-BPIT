@@ -64,13 +64,17 @@ import Signup from "./components/Signup";
 import HomePage from "./components/HomePage";
 import { BASE_URL } from "./main";
 import { useDispatch, useSelector } from "react-redux";
-import { setOnlineUsers, setTyping } from "./redux/userSlice";
+import { setAuthUser, setOnlineUsers, setTyping } from "./redux/userSlice";
 import { setSocket } from "./redux/socketSlice";
 import { setMessages, setOpenMessages } from "./redux/messageSlice";
 import MessageContainer from "./components/MessageContainer";
 import OpenChatForum from "./components/OpenChatForum";
-
+import Header from "./shared/Header";
+import Footer from "./shared/Footer"
+import axios from "axios";
+import useKeepUserLoggedIn from "./hooks/useKeepUserLoggedIn";
 function App() {
+    useKeepUserLoggedIn();
     const { authUser } = useSelector(store => store.user);
     const { socket } = useSelector(store => store.socket);
     const dispatch = useDispatch();
@@ -78,7 +82,7 @@ function App() {
     useEffect(() => {
         if (authUser) {
             const socketio = io(`${BASE_URL}`, {
-                query: { userId: authUser.user._id }
+                query: { userId: authUser._id }
             });
             dispatch(setSocket(socketio));
 
@@ -111,14 +115,18 @@ function App() {
         }
     }, [authUser, dispatch,authUser]);
 
+    
+
+
     return (
         <BrowserRouter>
+        <Header />
             <Routes>
+                <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/one-to-one" element={<MessageContainer />} />
-                <Route path="/open-chat" element={<OpenChatForum />} />
-                <Route path="/" element={<HomePage />} />
+                <Route path="/open-forum" element={<OpenChatForum />} />
             </Routes>
         </BrowserRouter>
     );

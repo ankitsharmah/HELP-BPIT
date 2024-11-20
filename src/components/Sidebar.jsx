@@ -39,6 +39,8 @@ const Sidebar = () => {
         }
     }
     return (
+        <div className='flex sm:h-[450px] md:h-[550px]   rounded-lg overflow-hidden bg-gray-400 outline outline-1  bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+
          <div className='border-r border-slate-500 p-4 outline outline-1 outline-red-600 flex flex-col'>
             <form onSubmit={searchSubmitHandler} action="" className='flex items-center gap-2'>
                 <input
@@ -56,6 +58,7 @@ const Sidebar = () => {
             <div className='mt-2'>
                 <button onClick={logoutHandler} className='btn btn-sm'>Logout</button>
             </div>
+        </div>
         </div>
     )
 }

@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  background: url(../public/bg.avif);
+  /* background-color: #e6c9f9; */
+  background-color: #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -12,6 +13,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+*{
+  /* outline: 1px solid red; */
 }
 
 code {
@@ -54,3 +58,19 @@ code {
     60%{background-position:0%  50%, 50% 100%,100%   0%}
     80%{background-position:0%  50%, 50%  50%,100% 100%}
 }
+
+.loader-chat {
+  --c:#ffffff;
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30px;
+  color: #ffffff00;
+  overflow: hidden;
+  text-shadow: 0 0 var(--c),11ch 0 var(--c);
+  animation: l6 2s infinite linear;
+}
+.loader-chat:before {
+  content:"Loading..."
+}
+@keyframes l6 {to{text-shadow:-11ch 0 var(--c),0ch 0 var(--c)}}
