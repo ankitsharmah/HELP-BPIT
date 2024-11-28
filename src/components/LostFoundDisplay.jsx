@@ -125,7 +125,7 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import "../app.css";
+import "../App.css";
 import { useSelector } from "react-redux";
 import useGetReports from "../hooks/useGetReports";
 
