@@ -133,7 +133,7 @@ export function LostFoundDisplay() {
   // useGetReports();
   const navigate = useNavigate();
   const {allReports} = useSelector(store=>store.reports)
-  const items = allReports;
+  const items = allReports.slice(0,5);
 
   return (
     <div className="bg-red overflow-x-scroll ">
