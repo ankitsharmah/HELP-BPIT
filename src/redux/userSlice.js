@@ -4,6 +4,7 @@ const userSlice = createSlice({
     name:"user",
     initialState:{
         isTyping: false,
+        isLoggedin: false,
         authUser:null,
         otherUsers:null,
         selectedUser:null,
@@ -13,6 +14,7 @@ const userSlice = createSlice({
     reducers:{
         setAuthUser:(state,action)=>{
             state.authUser = action.payload;
+            state.isLoggedin=true
         },
         setOtherUsers:(state, action)=>{
             state.otherUsers = action.payload;
@@ -30,10 +32,12 @@ const userSlice = createSlice({
         setSelectedOpenForum:(state,action)=>{
             console.log("called " ,action.payload )
             state.selectedOpenForum = action.payload;
-        
-    }
+        },
+        setIsloggedin:(state,action)=>{
+            state.isLoggedin =action.payload;
+        }
         },
       
 });
-export const {setAuthUser,setOtherUsers,setTyping,setSelectedUser,setOnlineUsers,setSelectedOpenForum} = userSlice.actions;
+export const {setAuthUser,setOtherUsers,setTyping,setIsloggedin,setSelectedUser,setOnlineUsers,setSelectedOpenForum} = userSlice.actions;
 export default userSlice.reducer;

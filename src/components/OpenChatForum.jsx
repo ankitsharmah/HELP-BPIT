@@ -60,7 +60,7 @@ const OpenChatForum = () => {
     }, []);
 
     return (
-        <div className="h-[93vh] max-w-4xl m-auto  overflow-y-scroll flex flex-col">
+        <div className="h-[93vh] max-w-4xl m-auto bg-yellow-50  overflow-y-scroll flex flex-col">
             <div className="flex gap-2 items-center mt-[0.77rem] bg-zinc-800 text-white px-4 py-2 mb-2">
                 <div className="w-12 h-9 rounded-full">
                     <MdForum />

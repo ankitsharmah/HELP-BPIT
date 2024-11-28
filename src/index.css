@@ -1,76 +1,86 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
-  /* background-color: #e6c9f9; */
+  /* Background style */
   background-color: #000000;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+
+  /* Font styling */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-*{
+
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Uncomment if you need a border for debugging */
   /* outline: 1px solid red; */
 }
 
+/* Code styling */
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-
+/* Thin scrollbar */
+/* Global styles for the custom scrollbar */
+/* This will style the scrollbar in most browsers (Webkit-based) */
 ::-webkit-scrollbar {
-  /* Customize the scrollbar width */
-  width:6px;
+  width: 9px;
+  height: 2px;
 }
-
 ::-webkit-scrollbar-track {
-  /* Customize the scrollbar track */
-  background-color: aliceblue;
+  background: #f1f1f1;
 }
-
 ::-webkit-scrollbar-thumb {
-  /* Customize the scrollbar thumb */
-  background: #1b1b1b;
-  border-radius: 10px;
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
-
+/* Loader styles */
 .loader {
   width: 30px;
   aspect-ratio: 2;
-  --_g: no-repeat radial-gradient(circle closest-side,#ffffff 90%,#ffffff00);
-  background: 
-    var(--_g) 0%   50%,
-    var(--_g) 50%  50%,
-    var(--_g) 100% 50%;
-  background-size: calc(100%/3) 50%;
+  --_g: no-repeat radial-gradient(circle closest-side, #ffffff 90%, #ffffff00);
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 50%;
   animation: l3 1s infinite linear;
 }
+
 @keyframes l3 {
-    20%{background-position:0%   0%, 50%  50%,100%  50%}
-    40%{background-position:0% 100%, 50%   0%,100%  50%}
-    60%{background-position:0%  50%, 50% 100%,100%   0%}
-    80%{background-position:0%  50%, 50%  50%,100% 100%}
+  20% { background-position: 0% 0%, 50% 50%, 100% 50%; }
+  40% { background-position: 0% 100%, 50% 0%, 100% 50%; }
+  60% { background-position: 0% 50%, 50% 100%, 100% 0%; }
+  80% { background-position: 0% 50%, 50% 50%, 100% 100%; }
 }
 
+/* Loader-chat text animation */
 .loader-chat {
-  --c:#ffffff;
+  --c: #ffffff;
   width: fit-content;
   font-weight: bold;
   font-family: monospace;
   font-size: 30px;
   color: #ffffff00;
   overflow: hidden;
-  text-shadow: 0 0 var(--c),11ch 0 var(--c);
+  text-shadow: 0 0 var(--c), 11ch 0 var(--c);
   animation: l6 2s infinite linear;
 }
+
 .loader-chat:before {
-  content:"Loading..."
+  content: "Loading...";
 }
-@keyframes l6 {to{text-shadow:-11ch 0 var(--c),0ch 0 var(--c)}}
+
+@keyframes l6 {
+  to { text-shadow: -11ch 0 var(--c), 0ch 0 var(--c); }
+}

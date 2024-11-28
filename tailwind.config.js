@@ -1,11 +1,98 @@
+// import defaultTheme from "tailwindcss/defaultTheme";
+
+// import colors from "tailwindcss/colors";
+// import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
+// import daisyui from "daisyui";
+
+// /** @type {import('tailwindcss').Config} */
+// export default {
+//   content: [
+//     "./index.html",
+//     "./src/**/*.{js,ts,jsx,tsx}",
+//   ],
+//   darkMode: "class",
+//   theme: {
+//     richblack: {
+//       5: "#F1F2FF",
+//       25: "#DBDDEA"
+//     },
+//     extend: {
+      
+//       animation: {
+//         scroll:
+//           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+//       },
+//       keyframes: {
+//         scroll: {
+//           to: {
+//             transform: "translate(calc(-50% - 0.5rem))",
+//           },
+//         },
+//       },
+//     },
+//   },
+//   plugins: [require("daisyui"),addVariablesForColors],
+// }
+
+// function addVariablesForColors({ addBase, theme }) {
+//   let allColors = flattenColorPalette(theme("colors"));
+//   let newVars = Object.fromEntries(
+//     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+//   );
+
+//   addBase({
+//     ":root": newVars,
+//   });
+// }
+
+
+import defaultTheme from "tailwindcss/defaultTheme";
+
+import colors from "tailwindcss/colors";
+import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
+import daisyui from "daisyui";
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx,ts,tsx}", // Adjust this line if you use different file extensions
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   theme: {
-    extend: {},
+    richblack: {
+      5: "#F1F2FF",
+      25: "#DBDDEA"
+    },
+    extend: {
+      
+      animation: {
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+      },
+    keyframes: {
+  scroll: {
+    from: {
+      transform: "translateY(0%)",
+    },
+    to: {
+      transform: "translateY(-100%)",
+    },
   },
-  plugins: [require("daisyui")],
-};
+}
+,
+    },
+  },
+  plugins: [require("daisyui"),addVariablesForColors],
+}
+
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}

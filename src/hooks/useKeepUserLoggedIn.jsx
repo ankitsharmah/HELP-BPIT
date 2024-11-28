@@ -4,6 +4,7 @@ import { setAuthUser } from "../redux/userSlice";
 import axios from "axios";
 import { BASE_URL } from "../main";
 import { Navigate, useNavigate } from "react-router-dom";
+import useGetReports from "./useGetReports";
 
 
 function useKeepUserLoggedIn(navigate) {
@@ -21,15 +22,17 @@ function useKeepUserLoggedIn(navigate) {
           if (response.data.valid) {
             dispatch(setAuthUser(response.data.user));
             console.log("veriffyeeddddd")
+            // useGetReports();
+            console.log("called")
             // navigate("/")
           } else {
             // localStorage.removeItem('token');
-            navigate("/login");
+            // navigate("/login");
           }
         } catch (error) {
           console.error("Token verification failed", error);
           // localStorage.removeItem('token');
-          navigate("/login");
+          // navigate("/login");
         }
       }
     };

@@ -73,8 +73,13 @@ import Header from "./shared/Header";
 import Footer from "./shared/Footer"
 import axios from "axios";
 import useKeepUserLoggedIn from "./hooks/useKeepUserLoggedIn";
+import LostAndFound from "./components/LostAndFound";
+import UserProfile from "./components/UserProfile";
+import LostAndFoundReport from "./components/LostAndFooundReport";
+import useGetReports from "./hooks/useGetReports";
 function App() {
     useKeepUserLoggedIn();
+    useGetReports();
     const { authUser } = useSelector(store => store.user);
     const { socket } = useSelector(store => store.socket);
     const dispatch = useDispatch();
@@ -119,16 +124,16 @@ function App() {
 
 
     return (
-        <BrowserRouter>
-        <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/profile" element={<UserProfile />} />
                 <Route path="/one-to-one" element={<MessageContainer />} />
                 <Route path="/open-forum" element={<OpenChatForum />} />
+                <Route path="/item/:id" element={<LostAndFound />} />
+                <Route path="/lost-found" element={<LostAndFoundReport />} />
             </Routes>
-        </BrowserRouter>
     );
 }
 
