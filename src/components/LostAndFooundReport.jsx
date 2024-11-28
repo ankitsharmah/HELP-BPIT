@@ -5,7 +5,7 @@ import useGetReports from "../hooks/useGetReports";
 
 const LostAndFoundReport = () => {
   const navigate = useNavigate();
-  // useGetReports();
+  useGetReports();
   const [isReporting, setIsReporting] = useState(false);
   const {allReports} = useSelector(store=>store.reports)
   const {isLoadingReports}=useSelector(store=>store.reports)
@@ -71,10 +71,10 @@ const LostAndFoundReport = () => {
         <section className="space-y-4 px-1  w-full  lg:col-span-3">
           <h2 className="text-lg  font-medium">Reported Items</h2>
           
-            {isLoadingReports ?<h1>
+          <div className={ `${isLoadingReports? "flex items-center justify-center":""} space-y-4 w-full h-[65vh] md:h-[460px] outline outline-[0.1px] rounded-lg p-2 overflow-y-scroll`}>
+          {isLoadingReports ?<h1 className="">
       fetching reports...
-     </h1> :<>  <div className="space-y-4 w-full h-[65vh] md:h-[460px] outline outline-[0.1px] rounded-lg p-2 overflow-y-scroll">
-            {allReports?.map((item, index) => (
+     </h1> :<>{allReports?.map((item, index) => (
               <div 
               onClick={()=>navigate("/item/2")} key={index} className="outline text-white outline-[.1px] p-2  rounded-md">
                 <h3 className="text-sm text-white font-bold">{item.itemType}</h3>
@@ -83,10 +83,9 @@ const LostAndFoundReport = () => {
                   Status: <span className="text-red-400">Lost</span>
                 </p>
               </div>
-            ))}
-          </div></>
-          
-            }
+            ))}</>
+          }   
+          </div>
 
           <div className="w-full flex items-center justify-center h-14">
             <button
