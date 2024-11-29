@@ -49,7 +49,7 @@ const Header = () => {
     //   loadUserFromStorage();
     // }, [dispatch]);
     return (
-        <div className="bg-white/30 backdrop-blur-md shadow-md border-b border-white/20 sticky  top-0 z-30  rounded-tl-md rounded-tr-md p-2 h-fit flex justify-between items-center">
+        <div className="bg-[#1E2A38] text-white  shadow-lg border-b border-white/20 sticky  top-0 z-30  rounded-tl-md rounded-tr-md p-2 h-fit flex justify-between items-center">
             <div className="flex gap-2 items-center cursor-pointer justify-center w-44" onClick={()=>{
                 navigate("/")
             }}>

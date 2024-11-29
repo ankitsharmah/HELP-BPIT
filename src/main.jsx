@@ -16,7 +16,8 @@ createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <BrowserRouter>
 
-      <div className="relative max-w-7xl mx-auto">
+
+      <div className="relative bg-[#121926] max-w-7xl mx-auto">
           <Header />
           <div className="overflow-hidden h-fit">
               <App />

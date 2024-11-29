@@ -38,7 +38,7 @@ function useKeepUserLoggedIn(navigate) {
     };
 
     loadUserFromStorage();
-  }, [dispatch, navigate]);
+  }, [dispatch]);
 }
 
 export default useKeepUserLoggedIn;

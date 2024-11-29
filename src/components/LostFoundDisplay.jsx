@@ -133,19 +133,19 @@ export function LostFoundDisplay() {
   // useGetReports();
   const navigate = useNavigate();
   const {allReports} = useSelector(store=>store.reports)
-  const items = allReports.slice(0,5);
+  const items = allReports.slice(0,5 );
 
   return (
-    <div className="bg-red overflow-x-scroll ">
-      <div className="container mx-auto ">
+    <div className="bg-red overflow-x-scroll containerr">
+      <div className="containerr mx-auto ">
        
-        <div className="flex overflow-x-auto gap-4 pb-2">
+        <div className="flex overflow-x-scroll containerr gap-4 pb-2">
           {items.map((item, idx) => (
             <div
               key={idx}
-              className="min-w-[12rem] md:w-[30%] bg-white/10 text-white rounded-2xl p-2 cursor-pointer border-[.2px] border-white hover:bg-opacity-20 transform transition duration-300"
+              className="min-w-[12rem] md:w-[30%] bg-[#18192f] text-white rounded-2xl p-2 cursor-pointer border-[.2px] border-white hover:bg-opacity-20 transform transition duration-300"
               onClick={() => {
-                navigate(`/item/${idx}`);
+                navigate(`/item/${item._id}`);
               }}
             >
               <div className="text-center mb-3">
@@ -186,126 +186,3 @@ export function LostFoundDisplay() {
   );
 }
 
-export const dummyReports = [
-  {
-    itemType: "Laptop",
-    location: "Library, Second Floor",
-    specification: "Dell Inspiron 15, Black, Serial No: AB123456",
-    category: "Electronics",
-    foundOn: "2024-11-20",
-    reportStatus: "FOUND",
-    reportedBy: {
-      fullname: "Ankit Sharma",
-      nickName: "bikkuu",
-      email: "a@gmail.com",
-      profilePic: "https://avatar.iran.liara.run/username?username=bikkuu",
-      gender: "male",
-      createdAt: "2024-10-10T16:40:50.120Z",
-      updatedAt: "2024-11-22T17:29:09.399Z",
-    },
-  },
-  {
-    itemType: "Headphones",
-    location: "Main Hall",
-    specification: "Sony WH-1000XM4, Black, Noise Cancelling",
-    category: "Electronics",
-    foundOn: "2024-11-18",
-    reportStatus: "FOUND",
-    reportedBy: {
-      fullname: "Sima Malik",
-      nickName: "simplysim",
-      email: "simamail@example.com",
-      profilePic: "https://avatar.iran.liara.run/username?username=simplysim",
-      gender: "female",
-      phone: "9999922222",
-      createdAt: "2024-10-12T16:40:50.120Z",
-      updatedAt: "2024-11-20T17:29:09.399Z",
-    },
-  },
-  {
-    itemType: "Headphones",
-    location: "Main Hall",
-    specification: "Sony WH-1000XM4, Black, Noise Cancelling",
-    category: "Electronics",
-    foundOn: "2024-11-18",
-    reportStatus: "FOUND",
-    reportedBy: {
-      fullname: "Sima Malik",
-      nickName: "simplysim",
-      email: "simamail@example.com",
-      profilePic: "https://avatar.iran.liara.run/username?username=simplysim",
-      gender: "female",
-      createdAt: "2024-10-12T16:40:50.120Z",
-      updatedAt: "2024-11-20T17:29:09.399Z",
-    },
-  },
-  {
-    itemType: "Headphones",
-    location: "Main Hall",
-    specification: "Sony WH-1000XM4, Black, Noise Cancelling",
-    category: "Electronics",
-    foundOn: "2024-11-18",
-    reportStatus: "FOUND",
-    reportedBy: {
-      fullname: "Sima Malik",
-      nickName: "simplysim",
-      email: "simamail@example.com",
-      profilePic: "https://avatar.iran.liara.run/username?username=simplysim",
-      gender: "female",
-      createdAt: "2024-10-12T16:40:50.120Z",
-      updatedAt: "2024-11-20T17:29:09.399Z",
-    },
-  },
-  {
-    itemType: "Headphones",
-    location: "Main Hall",
-    specification: "Sony WH-1000XM4, Black, Noise Cancelling",
-    category: "Electronics",
-    foundOn: "2024-11-18",
-    reportStatus: "FOUND",
-    reportedBy: {
-      fullname: "Sima Malik",
-      nickName: "simplysim",
-      email: "simamail@example.com",
-      profilePic: "https://avatar.iran.liara.run/username?username=simplysim",
-      gender: "female",
-      createdAt: "2024-10-12T16:40:50.120Z",
-      updatedAt: "2024-11-20T17:29:09.399Z",
-    },
-  },
-  {
-    itemType: "Headphones",
-    location: "Main Hall",
-    specification: "Sony WH-1000XM4, Black, Noise Cancelling",
-    category: "Electronics",
-    foundOn: "2024-11-18",
-    reportStatus: "FOUND",
-    reportedBy: {
-      fullname: "Sima Malik",
-      nickName: "simplysim",
-      email: "simamail@example.com",
-      profilePic: "https://avatar.iran.liara.run/username?username=simplysim",
-      gender: "female",
-      createdAt: "2024-10-12T16:40:50.120Z",
-      updatedAt: "2024-11-20T17:29:09.399Z",
-    },
-  },
-  {
-    itemType: "Headphones",
-    location: "Main Hall",
-    specification: "Sony WH-1000XM4, Black, Noise Cancelling",
-    category: "Electronics",
-    foundOn: "2024-11-18",
-    reportStatus: "FOUND",
-    reportedBy: {
-      fullname: "Sima Malik",
-      nickName: "simplysim",
-      email: "simamail@example.com",
-      profilePic: "https://avatar.iran.liara.run/username?username=simplysim",
-      gender: "female",
-      createdAt: "2024-10-12T16:40:50.120Z",
-      updatedAt: "2024-11-20T17:29:09.399Z",
-    },
-  },
-  // Add more items as needed
-];

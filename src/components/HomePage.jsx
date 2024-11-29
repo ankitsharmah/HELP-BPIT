@@ -23,7 +23,7 @@ const HomePage = () => {
   // const navigate = useNavigate()
  
   return (
-    <div className='p-1 md:p-7'>
+    <div className='p-1 bg-[#121926] md:p-7'>
     
     <div className='h-[25vh] md:h-[50vh] w-full '>
       <img src={homePage} alt="" className=' w-full h-full object-cover'/>
@@ -35,7 +35,7 @@ const HomePage = () => {
     </div>
 
 
-      <div className=' bg-yellow-5 py-3  flex flex-col '>
+      <div className=' bg-yellow-5 py-3 containerr flex flex-col '>
 
         {/* <h1 className='text-center pb-2 text-xl font-bold text-white '>Latest Found</h1> */}
 
@@ -59,17 +59,17 @@ const HomePage = () => {
       <p className='text-base md:text-center'>Access and share valuable notes and books with others</p>
       </div>
 
-    <div onClick={()=>navigate("/lost-found")}  className="outline flex  outline-[.5px]   rounded-[1.3rem] text-black  flex-col items-center  bg-[#f96d5b]  cursor-pointer md:w-[48%] w-[60%] outline-white  gap-1 p-2">
+    <div onClick={()=>navigate("/lost-found")}  className="outline flex  outline-[.5px]   text-white  flex-col items-center  bg-[#E63946] text-white p-6 rounded-xl shadow-lg space-y-4 cursor-pointer md:w-[48%] w-[60%] outline-white  gap-1 ">
      <div className='flex md:flex-col w-full  justify-around   items-center'>
-     <IoSearchOutline  className="text-7xl   font-bold  text-center text-black"/>
+     <IoSearchOutline  className="text-7xl   font-bold  text-center text-"/>
      <h3 className=' text-[1.6rem] text-center  font-bold p-1'>
      Lost and Found </h3>
      </div>
-     <div className='bg-[#000000a9] h-[1px] w-[65%] '></div>
+ 
       <p className='md:text-base text-base  md:text-center'>  Report lost itmes or find owners who are missing theirs </p>
       </div>
 
-      <div onClick={()=>navigate("/open-forum")} className="outline outline-[.5px] rounded-[1.3rem]  text-black flex flex-col items-center bg-[#f5e475]  cursor-pointer w-[37%] md:w-[48%]  p-2">
+      <div onClick={()=>navigate("/open-forum")} className="outline outline-[.5px] rounded-[1.3rem]  text-black flex flex-col items-center   shadow-lg space-y-4   bg-[#FAB005] cursor-pointer w-[37%] md:w-[48%]  p-2">
       <div className='flex flex-col w-full  justify-between   items-center'>
       <PiChatsCircleLight className="text-6xl font-bold  text-center text-black"/>
       <h3 className=' text-[1.36rem] text-center  font-extrabold p-1'>Open Forum</h3>
@@ -79,17 +79,17 @@ const HomePage = () => {
       </div>
   
       
-      <div  className="outline outline-[.5px] rounded-[1.3rem]  text-black flex flex-col items-center bg-[#75f5a2]  cursor-pointer w-[37%] md:w-[48%]  p-2">
+      <div  className="outline outline-[.5px]  flex flex-col items-center bg-[#2A9D8F] text-white p-6 rounded-xl shadow-lg  cursor-pointer p-6 rounded-xl shadow-lg space-y-4 w-[37%] md:w-[48%]  p-">
           <div className='flex flex-col w-full  justify-between   items-center'>
-          <PiNewspaper className="text-4xl h-12  w-16  font-bold  text-center text-black"/>
+          <PiNewspaper className="text-4xl h-12  w-16  font-bold  text-center text-[2B2B2B]"/>
           <h3 className=' text-[1.5rem] text-center  font-bold p-1'>News</h3>
           </div>
-      <p className='md:text-base text-xs  md:text-center  text-[#000000fc] text-wrap '>Know latest opening at Alumini work place</p>
+      <p className='md:text-base text-xs  md:text-center   text-wrap '>Know latest opening at Alumini work place</p>
     
       </div>
 
 
-      <div className="outline flex  outline-[.5px]   rounded-[1.3rem] text-black md:hidden flex-col items-center text-center   bg-[#f8b6cf] cursor-pointer md:w-[30%] w-[60%] outline-white  gap-1 p-2">
+      <div className="outline flex  outline-[.5px]    md:hidden flex-col items-center text-center   bg-[#F4A261] text-[#1E2A38] p-6 rounded-xl shadow-lg space-y-4 cursor-pointer md:w-[30%] w-[60%] outline-white  gap-1 ">
       <div className='flex md:flex-col w-full  justify-between   items-center'>
       <IoBookOutline  className="text-7xl h-12  w-16  font-bold  text-center text-black"/>
       <h3 className=' text-[1.2rem] text-center  font-bold p-1'>Notes & Book Sharing</h3>

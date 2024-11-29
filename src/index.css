@@ -4,7 +4,8 @@
 
 body {
   /* Background style */
-  background-color: #000000;
+  background-color: #121926       ;
+  /* background-color: #000000; */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -33,10 +34,10 @@ code {
 /* Thin scrollbar */
 /* Global styles for the custom scrollbar */
 /* This will style the scrollbar in most browsers (Webkit-based) */
-::-webkit-scrollbar {
-  width: 9px;
-  height: 2px;
+.containerr::-webkit-scrollbar {
+  display: none;
 }
+
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
@@ -84,3 +85,6 @@ code {
 @keyframes l6 {
   to { text-shadow: -11ch 0 var(--c), 0ch 0 var(--c); }
 }
+
+
+/* Body Background */
