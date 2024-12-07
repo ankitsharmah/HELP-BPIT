@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between items-center mt-4 p-4 bg-gray-800 h-9 md:h-16 md:text-base text-xs text-white">
+    <footer className="flex justify-between items-center mt-4 p-2 md:p-4 bg-gray-800  md:h-20 md:text-base text-xs text-white">
       {/* Left Side */}
       <div>
         <p>Contact us on</p>
