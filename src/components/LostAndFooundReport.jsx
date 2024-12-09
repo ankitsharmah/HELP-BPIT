@@ -35,9 +35,7 @@ const LostAndFoundReport = () => {
           const matchesDate = filterData.date
             ? report.foundOn === filterData.date
             : true;
-          const matchesStatus = filterData.status
-            ? report.reportStatus === filterData.status
-            : true;
+          const matchesStatus = filterData.status ? report.reportStatus === filterData.status : true;
           return matchesCategory && matchesDate && matchesStatus;
         });
 
@@ -50,7 +48,9 @@ const LostAndFoundReport = () => {
     if (allReports) {
       filterReports();
     }
-  }, [filterData, allReports]);
+
+  }, [filterData, allReports,dispatch]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
