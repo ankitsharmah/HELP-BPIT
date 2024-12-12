@@ -48,7 +48,7 @@ console.log(res)
 
 
 
-            <div className="w-[100%] mt-6 outline-[.1px] h-[27vh]  rounded-lg bg-[#cfcbcb]">
+            <div className="w-[100%] mt-6 outline-[.1px] h-[27vh]  rounded-lg bg-[#f0efefc9]">
 
             </div>
 
