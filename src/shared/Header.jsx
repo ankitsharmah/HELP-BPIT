@@ -86,7 +86,7 @@ const Header = () => {
                     <li className="hover:underline hover:decoration-black cursor-pointer">Open Forum</li>
                     <li className="hover:underline hover:decoration-black cursor-pointer">Lost & Found</li>
                     {
-                        isLoggedin ? <li className="hover:underline hover:decoration-black cursor-pointer">Profile</li>:<div>
+                        isLoggedin ? <NavLink to={"/profile" } className={"hover:underline  hover:decoration-black cursor-pointer"} onClick={()=>setOpen(false)}>Profile</NavLink>:<div>
                             <NavLink to={"/login"}>sign in</NavLink>
                             <NavLink to={"/signup"}>sign up</NavLink>
                           
