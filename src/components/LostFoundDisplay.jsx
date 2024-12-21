@@ -141,10 +141,17 @@ export function LostFoundDisplay() {
        
         <div className={isLoadingReports ?"":"flex items-center overflow-x-scroll containerr gap-4 pb-2"}>
         {
-          isLoadingReports ? <div className=" flex  gap-2">
+          isLoadingReports ? <>
+          <div className="flex items-center justify-center">
+            <p>
+              Loading...
+            </p>
+          </div>
+          <div className=" md:hidden flex  gap-2">
           <div className="bg-gray-300 h-[150px] ml-2 rounded-md w-44"></div>
           <div className="bg-gray-300 h-[150px] rounded-md w-44"></div>
-          </div>:<>
+          </div>
+          </>:<>
           {items.map((item, idx) => (
             <div
               key={idx}
