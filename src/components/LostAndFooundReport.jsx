@@ -190,12 +190,17 @@ const LostAndFoundReport = () => {
           <h2 className="text-lg font-medium">Reported Items</h2>
 
           <div
-            className={`${
-              isLoadingReports ? "flex items-center justify-center" : ""
-            } space-y-4 w-full h-[65vh] md:h-[460px] outline outline-[0.1px] rounded-lg p-2 overflow-y-scroll`}
+            className={` space-y-4 w-full h-[65vh] md:h-[460px] outline outline-[0.1px] rounded-lg p-2 overflow-y-scroll`}
           >
             {isLoadingReports ? (
-              <h1>Fetching reports...</h1>
+              <div className="flex flex-col gap-3">
+              {[...Array(10)].map((_, index) => (
+                  <div
+                    key={index}
+                    className="h-16 bg-gray-700 rounded-md"
+                  ></div>
+                ))}
+              </div>
             ) : (
               <>
                 {filteredReports.length > 0 ? (

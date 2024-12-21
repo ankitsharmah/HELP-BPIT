@@ -37,7 +37,7 @@ console.log(res)
   console.log(item)
   if (isLoadingReports) {
     return (
-      <div className="h-[88vh] flex flex-col items-center text-white p-6 shadow-lg max-w-md mx-auto border border-gray-700 relative overflow-hidden">
+      <div className="h-[88vh] animate-pulse flex flex-col items-center text-white p-6 shadow-lg max-w-md mx-auto border border-gray-700 relative overflow-hidden">
     
             <div className="flex h-fit w-full items-center justify-center flex-col gap-2">
 

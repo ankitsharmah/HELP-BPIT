@@ -147,7 +147,7 @@ export function LostFoundDisplay() {
               Loading...
             </p>
           </div>
-          <div className=" md:hidden flex  gap-2">
+          <div className=" md:hidden flex animate-pulse  gap-2">
           <div className="bg-gray-300 h-[150px] ml-2 rounded-md w-44"></div>
           <div className="bg-gray-300 h-[150px] rounded-md w-44"></div>
           </div>
