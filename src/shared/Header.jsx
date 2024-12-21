@@ -16,41 +16,9 @@ const Header = () => {
     const {isLoggedin} =useSelector(store=>store.user)
     const dropdownRef = useRef(null);
 
-    // Use the custom hook to handle clicks outside the dropdown
-    // useOnClickOutside(dropdownRef, () => setOpen(false));
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //   const loadUserFromStorage = async () => {
-    //     const token = localStorage.getItem('authToken');
-    //     const storedUser = localStorage.getItem('authUser');
-  
-    //     if (token && storedUser) {
-    //       try {
-    //         // Optionally verify token with an API call
-    //         const response = await axios.get('/api/auth/verify', {
-    //           headers: { Authorization: `Bearer ${token}` },
-    //         });
-  
-    //         if (response.data.valid) {
-    //           dispatch(setAuthUser(JSON.parse(storedUser)));
-    //         } else {
-    //           localStorage.removeItem('authToken');
-    //           localStorage.removeItem('authUser');
-    //         }
-    //       } catch (error) {
-    //         console.error('Failed to verify token', error);
-    //         localStorage.removeItem('authToken');
-    //         localStorage.removeItem('authUser');
-    //       }
-    //     }
-    //   };
-  
-    //   loadUserFromStorage();
-    // }, [dispatch]);
     return (
-        <div className="bg-[#1E2A38] text-white  shadow-lg border-b border-white/20 sticky  top-0 z-30  rounded-tl-md rounded-tr-md p-2 h-fit flex justify-between items-center">
-            <div className="flex gap-2 items-center cursor-pointer justify-center w-44" onClick={()=>{
+        <div className="bg-[#1E2A38] text-white  shadow-lg border-b border-white/20 sticky  top-0 z-30  rounded-tl-md rounded-tr-md p-2 h-fit flex justify-between items-center m">
+            <div className="flex gap-2 ml-2 items-center cursor-pointer justify-between " onClick={()=>{
                 navigate("/")
             }}>
                 <FaHandshakeAngle className="text-[2.8rem] text-white" />
@@ -58,22 +26,59 @@ const Header = () => {
             </div>
 
             <div className='h-fit'>
-            <div className='overflow-x-hidden realtive md:hidden'>
 
-                <Hamburger toggled={isOpen} toggle={setOpen} color='white' className="md:hidden" />
-          {
-           <div className={!isOpen?"translate-x-16 hidden transition-transform duration-300 w-36 absolute bg-gray-200 ":"-translate-x-[5.6rem]  transition-transform duration-300 w-36 absolute  bg-gray-200 "}>
-            {
-                        isLoggedin ? <NavLink to={"/profile" } className={"hover:underline  hover:decoration-black cursor-pointer"} onClick={()=>setOpen(false)}>Profile</NavLink>:<div>
-                            <NavLink to={"/login"} 
-                            onClick={()=>setOpen(false)}>sign in</NavLink>
-                            <NavLink to={"/signup"}
-                            onClick={()=>setOpen(false)}>sign up</NavLink>
-                          
-                        </div>
-                    }
-            </div>
-          }
+            <div className='overflow-x-hidden mr-2 realtive md:hidden'>
+
+            <Hamburger toggled={isOpen} toggle={setOpen} color="white" className="md:hidden mr-1" />
+  {
+    <div className={!isOpen ? "h-fit hidden left-0 top-0 duration-300 p-2 absolute bg-gray-500 " : "bg-gray-600 h-fit right-0 top-16  duration-300 p-2 absolute"}>
+      <div className="h-5 w-5 bg-gray-600 -translate-y-2 absolute right-[1.85rem] rotate-45 -z-10 top-0"></div>
+      {
+        isLoggedin ? (
+          <div className="flex flex-col p-2">
+            <NavLink 
+              to={"/"} 
+              className="py-2 px-4 bg-gray-700 text-white rounded hover:bg-gray-500 hover:scale-105 transition-all duration-300 hover:shadow-md cursor-pointer mb-2"
+              onClick={() => setOpen(false)}
+            >
+              Home
+            </NavLink>
+            <NavLink 
+              to={"/profile"} 
+              className="py-2 px-4 bg-gray-700 text-white rounded hover:bg-gray-500 hover:scale-105 transition-all duration-300 hover:shadow-md cursor-pointer" 
+              onClick={() => setOpen(false)}
+            >
+              Profile
+            </NavLink>
+          </div>
+        ) : (
+          <div className="flex flex-col">
+            <NavLink 
+              to={"/"} 
+              className="py-2 px-4 bg-gray-700 text-white rounded hover:bg-gray-500 hover:scale-105 transition-all duration-300 hover:shadow-md cursor-pointer"
+              onClick={() => setOpen(false)}
+            >
+              Home
+            </NavLink>
+            <NavLink 
+              to={"/login"} 
+              className="py-2 px-4 bg-gray-700 text-white rounded hover:bg-gray-500 hover:scale-105 transition-all duration-300 hover:shadow-md cursor-pointer mt-2"
+              onClick={() => setOpen(false)}
+            >
+              Sign In
+            </NavLink>
+            <NavLink 
+              to={"/signup"} 
+              className="py-2 px-4 bg-gray-700 text-white rounded hover:bg-gray-500 hover:scale-105 transition-all duration-300 hover:shadow-md cursor-pointer mt-2"
+              onClick={() => setOpen(false)}
+            >
+              Sign Up
+            </NavLink>
+          </div>
+        )
+      }
+    </div>
+  }
                     
 
             </div>
@@ -87,7 +92,7 @@ const Header = () => {
                     <li className="hover:underline hover:decoration-black cursor-pointer">Lost & Found</li>
                     {
                         isLoggedin ? <NavLink to={"/profile" } className={"hover:underline  hover:decoration-black cursor-pointer"} onClick={()=>setOpen(false)}>Profile</NavLink>:<div>
-                            <NavLink to={"/login"}>sign in</NavLink>
+                            <NavLink to={"/login"} className={"p-2 outline "}>sign in</NavLink>
                             <NavLink to={"/signup"}>sign up</NavLink>
                           
                         </div>
