@@ -10,7 +10,7 @@ const LostAndFound = () => {
   const { id } = useParams(); // Extract the ID from the URL
   // useGetReports();
   const [item, setItem] = useState(null); // Initialize item as null to handle async fetching
-  const { allReports } = useSelector((store) => store.reports);
+
   const [isLoadingReports,setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const LostAndFound = () => {
 console.log(res)
             if(res.data.success){
                 setItem(res.data.report)
-                console.log("in iffffffffffdfdfsd")
+                
                 setIsLoading(false)
 
             }
@@ -77,7 +77,7 @@ console.log(res)
   }
 
   return (
-    <div className="h-[88vh] flex flex-col items-center text-white p-6 shadow-lg max-w-md mx-auto border border-gray-700 relative overflow-hidden">
+  <div className="h-[88vh]  flex flex-col items-center text-white p-6 shadow-lg max-w-md mx-auto border border-gray-700 relative overflow-hidden">
       {/* Header Section */}
       <div className="relative z-10 text-center mb-8">
         <h2 className="text-2xl font-bold">{item.itemType || "Unknown Item"}</h2>
@@ -85,9 +85,9 @@ console.log(res)
       </div>
 
       {/* Details Section */}
-      <div className="space-y-6">
+      <div className="space-y-6 w-full ">
         {/* Details */}
-        <div className="bg-[#222637] p-4 rounded-lg shadow-inner">
+        <div className="bg-[#222637] h-fit w-[100%] p-4 rounded-lg   shadow-inner">
           <h3 className="text-lg font-semibold mb-4">Details</h3>
           <p className="text-sm">
             <span className="font-medium text-gray-300">Location:</span>{" "}
@@ -109,7 +109,7 @@ console.log(res)
 
         {/* Reported By */}
         {item.reportedBy && (
-          <div className="bg-[#222637] p-4 rounded-lg shadow-inner">
+          <div className="bg-[#222637] p-4 rounded-lg w-full shadow-inner">
             <h3 className="text-lg font-semibold mb-4">Reported By</h3>
             <div className="flex items-center space-x-4">
               <img

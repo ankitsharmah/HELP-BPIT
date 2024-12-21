@@ -92,7 +92,7 @@ const Header = () => {
                     <li className="hover:underline hover:decoration-black cursor-pointer">Lost & Found</li>
                     {
                         isLoggedin ? <NavLink to={"/profile" } className={"hover:underline  hover:decoration-black cursor-pointer"} onClick={()=>setOpen(false)}>Profile</NavLink>:<div>
-                            <NavLink to={"/login"} className={"p-2 outline "}>sign in</NavLink>
+                            <NavLink to={"/login"} className={"mr-1 "}>sign in</NavLink>
                             <NavLink to={"/signup"}>sign up</NavLink>
                           
                         </div>
