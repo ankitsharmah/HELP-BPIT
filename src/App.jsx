@@ -80,6 +80,7 @@ import useGetReports from "./hooks/useGetReports";
 function App() {
     useKeepUserLoggedIn();
     useGetReports();
+    console.log("app.jsx mounted")
     const { authUser } = useSelector(store => store.user);
     const { socket } = useSelector(store => store.socket);
     const dispatch = useDispatch();
