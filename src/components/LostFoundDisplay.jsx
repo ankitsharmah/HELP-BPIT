@@ -132,14 +132,19 @@ import useGetReports from "../hooks/useGetReports";
 export function LostFoundDisplay() {
   // useGetReports();
   const navigate = useNavigate();
-  const {allReports} = useSelector(store=>store.reports)
+  const {allReports,isLoadingReports} = useSelector(store=>store.reports)
   const items = allReports.slice(0,5 );
 
   return (
-    <div className="bg-red overflow-x-scroll containerr">
-      <div className="containerr mx-auto ">
+    <div className=" h-full overflow-x-scroll containerr">
+      <div className="containerr  mx-auto ">
        
-        <div className="flex overflow-x-scroll containerr gap-4 pb-2">
+        <div className={isLoadingReports ?"":"flex items-center overflow-x-scroll containerr gap-4 pb-2"}>
+        {
+          isLoadingReports ? <div className=" flex  gap-2">
+          <div className="bg-gray-300 h-[150px] ml-2 rounded-md w-44"></div>
+          <div className="bg-gray-300 h-[150px] rounded-md w-44"></div>
+          </div>:<>
           {items.map((item, idx) => (
             <div
               key={idx}
@@ -171,13 +176,19 @@ export function LostFoundDisplay() {
               </div>
             </div>
           ))}
-          <NavLink
+
+          {
+            isLoadingReports ? <></>:  <NavLink
           to="/lost-found"
           className="flex items-center justify-center bg-transparent text-white  border-white rounded-full shadow-md hover:bg-white hover:text-black transition duration-300"
         >
           <MdKeyboardDoubleArrowRight className="text-2xl font-semibold mr-2" />
 
         </NavLink>
+          }
+        
+          </>
+        }
         </div>
 
        
