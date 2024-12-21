@@ -11,7 +11,7 @@ const LostAndFoundReport = () => {
   const [isReporting, setIsReporting] = useState(false);
   const dispatch = useDispatch();
   const [addingReport,setAddReport]= useState(false);
-
+  const today = new Date().toISOString().split('T')[0];
   const { allReports } = useSelector((store) => store.reports);
   const { isLoadingReports } = useSelector((store) => store.reports);
   const { filterData } = useSelector((store) => store.reports);
@@ -129,6 +129,7 @@ const LostAndFoundReport = () => {
                 )
               }
               value={filterData.date}
+            max={today}
               type="date"
               className="w-full bg-black border-[0.1px] text-white rounded-md p-2"
             />
@@ -199,7 +200,6 @@ const LostAndFoundReport = () => {
               <>
                 {filteredReports.length > 0 ? (
                   <>
-                    {" "}
                     {filteredReports?.map((item, index) => (
                       <div
                         onClick={() => navigate(`/item/${item._id}`)}
@@ -351,6 +351,7 @@ const LostAndFoundReport = () => {
                   value={formData.foundOn}
                   onChange={handleChange}
                   required
+                  max={today}
                   className="border p-2 bg-[#474646] rounded w-full"
                 />
               </div>
