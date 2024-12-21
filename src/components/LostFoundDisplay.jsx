@@ -142,7 +142,7 @@ export function LostFoundDisplay() {
         <div className={isLoadingReports ?"":"flex items-center overflow-x-scroll containerr gap-4 pb-2"}>
         {
           isLoadingReports ? <>
-          <div className="flex items-center justify-center">
+          <div className=" items-center justify-center hidden md:flex">
             <p>
               Loading...
             </p>
