@@ -35,7 +35,7 @@ const HomePage = () => {
     </div>
 
 
-      <div className=' bg-yellow-5 py-3 containerr flex flex-col '>
+      <div className=' bg-yellow-5 py-3  containerr min-h-[173px]  flex flex-col '>
 
         {/* <h1 className='text-center pb-2 text-xl font-bold text-white '>Latest Found</h1> */}
 
