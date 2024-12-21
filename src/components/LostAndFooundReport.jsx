@@ -179,7 +179,9 @@ const LostAndFoundReport = () => {
                   <p className="text-xs">Reported on: {item.foundOn}</p>
                   <p className="text-sm">
                     Status:{" "}
-                    <span className="text-red-400">{item.reportStatus}</span>
+                    <span  className={`font-extrabold ${
+                      item.reportStatus === "FOUND" ? "text-green-400" : "text-red-500"
+                    }`}>{item.reportStatus}</span>
                   </p>
                 </div>
               ))
