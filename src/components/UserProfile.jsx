@@ -1,104 +1,28 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const UserProfile = () => {
-    const user = {
-        _id: "6708039296e4e64b8cc0a650",
-        fullname: "Ankit Sharma",
-        nickName: "bikkuu",
-        email: "a@gmail.com",
-        profilePic: "https://avatar.iran.liara.run/username?username=bikkuu",
-        gender: "male",
-        friends: [],
-        createdAt: "2024-10-10T16:40:50.120Z",
-        updatedAt: "2024-11-22T17:29:09.399Z",
-        reports: [
-          {
-            _id: "6740a399e5c73b1e17e6a056",
-            itemType: "Laptop",
-            location: "Library, Second Floor",
-            specification: "Dell Inspiron 15, Black, Serial No: AB123456",
-            category: "Electronics",
-            foundOn: "2024-11-20",
-            reportStatus: "FOUND",
-            reportedBy: "6708039296e4e64b8cc0a650",
-            createdAt: "2024-11-22T15:30:33.831Z",
-            updatedAt: "2024-11-22T15:30:33.831Z",
-            __v: 0,
-          },
-          {
-            _id: "6740bf659b64f27c50f65142",
-            itemType: "Laptop",
-            location: "Library, Second Floor",
-            specification: "Dell Inspiron 15, Black, Serial No: AB123456",
-            category: "Electronics",
-            foundOn: "2024-11-20",
-            reportStatus: "LOST",
-            reportedBy: "6708039296e4e64b8cc0a650",
-            createdAt: "2024-11-22T17:29:09.245Z",
-            updatedAt: "2024-11-22T17:29:09.245Z",
-            __v: 0,
-          },
-          {
-            _id: "6740a399e5c73b1e17e6a056",
-            itemType: "Laptop",
-            location: "Library, Second Floor",
-            specification: "Dell Inspiron 15, Black, Serial No: AB123456",
-            category: "Electronics",
-            foundOn: "2024-11-20",
-            reportStatus: "FOUND",
-            reportedBy: "6708039296e4e64b8cc0a650",
-            createdAt: "2024-11-22T15:30:33.831Z",
-            updatedAt: "2024-11-22T15:30:33.831Z",
-            __v: 0,
-          },
-          {
-            _id: "6740bf659b64f27c50f65142",
-            itemType: "Laptop",
-            location: "Library, Second Floor",
-            specification: "Dell Inspiron 15, Black, Serial No: AB123456",
-            category: "Electronics",
-            foundOn: "2024-11-20",
-            reportStatus: "FOUND",
-            reportedBy: "6708039296e4e64b8cc0a650",
-            createdAt: "2024-11-22T17:29:09.245Z",
-            updatedAt: "2024-11-22T17:29:09.245Z",
-            __v: 0,
-          },
-          {
-            _id: "6740a399e5c73b1e17e6a056",
-            itemType: "Laptop",
-            location: "Library, Second Floor",
-            specification: "Dell Inspiron 15, Black, Serial No: AB123456",
-            category: "Electronics",
-            foundOn: "2024-11-20",
-            reportStatus: "FOUND",
-            reportedBy: "6708039296e4e64b8cc0a650",
-            createdAt: "2024-11-22T15:30:33.831Z",
-            updatedAt: "2024-11-22T15:30:33.831Z",
-            __v: 0,
-          },
-          {
-            _id: "6740bf659b64f27c50f65142",
-            itemType: "Laptop",
-            location: "Library, Second Floor",
-            specification: "Dell Inspiron 15, Black, Serial No: AB123456",
-            category: "Electronics",
-            foundOn: "2024-11-20",
-            reportStatus: "FOUND",
-            reportedBy: "6708039296e4e64b8cc0a650",
-            createdAt: "2024-11-22T17:29:09.245Z",
-            updatedAt: "2024-11-22T17:29:09.245Z",
-            __v: 0,
-          },
-        ],
-      }
-      const foundItems = user.reports.filter(
-        (report) => report.reportStatus === "FOUND"
-      );
-      const lostItems = user.reports.filter(
-        (report) => report.reportStatus === "LOST"
-      );
-    
+  const { allReports } = useSelector((store) => store.reports);
+const { authUser } = useSelector((store) => store.user);
+
+console.log(authUser);
+
+const foundItems = allReports
+  ? allReports.filter(
+      (report) =>
+        report.reportStatus === "FOUND" &&
+        authUser?._id === report.reportedBy?._id
+    )
+  : [];
+
+const lostItems = allReports
+  ? allReports.filter(
+      (report) =>
+        report.reportStatus === "LOST" &&
+        authUser?._id === report.reportedBy?._id
+    )
+  : [];
+
       return (
         <div className="bg-black min-h-screen text-white p-6">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -106,15 +30,15 @@ const UserProfile = () => {
             <div className="bg-gray-900 rounded-lg shadow-lg p-6">
               <div className="text-center">
                 <img
-                  src={user.profilePic}
-                  alt={user.nickName}
+                  src={authUser.profilePic}
+                  alt={authUser.nickName}
                   className="w-32 h-32 rounded-full mx-auto border-4 border-gray-700"
                 />
-                <h1 className="text-2xl font-bold mt-4">{user.fullname}</h1>
-                <p className="text-gray-400">@{user.nickName}</p>
-                <p className="text-gray-300">{user.email}</p>
+                <h1 className="text-2xl font-bold mt-4">{authUser.fullname}</h1>
+                <p className="text-gray-400">@{authUser.nickName}</p>
+                <p className="text-gray-300">{authUser.email}</p>
                 <p className="text-sm text-gray-500 mt-2">
-                  Member since: {new Date(user.createdAt).toLocaleDateString()}
+                  Member since: {new Date(authUser.createdAt).toLocaleDateString()}
                 </p>
               </div>
             </div>
@@ -122,9 +46,9 @@ const UserProfile = () => {
             {/* Friends Section */}
             <div className="bg-gray-900 rounded-lg shadow-lg p-6 col-span-1 md:col-span-2">
               <h2 className="text-xl font-bold mb-4">Friends</h2>
-              {user.friends && user.friends.length > 0 ? (
+              {authUser.friends && authUser.friends.length > 0 ? (
                 <ul className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {user.friends.map((friend, index) => (
+                  {authUser.friends.map((friend, index) => (
                     <li
                       key={index}
                       className="bg-gray-800 p-4 rounded-md shadow-md text-center"
