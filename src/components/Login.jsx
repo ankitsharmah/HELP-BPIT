@@ -89,7 +89,7 @@ const Login = () => {
     <div className="min-w-96 md:w-[40%] h-[81vh] flex items-center  mx-auto">
     
       <div className='w-full p-6 rounded-lg shadow-md bg-gray-800  border border-gray-100'>
-        <h1 className='text-3xl font-bold text-center'>Login</h1>
+        <h1 className='text-3xl font-bold text-white text-center'>Login</h1>
         <form onSubmit={onSubmitHandler} action="">
 
           <div>
@@ -105,7 +105,7 @@ const Login = () => {
           </div>
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Password</span>
+              <span className='text-base text-white label-text'>Password</span>
             </label>
             <input
               value={user.password}

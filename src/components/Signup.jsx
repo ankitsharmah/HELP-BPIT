@@ -53,12 +53,12 @@ const Signup = () => {
   return (
     <div className="min-w-96 md:w-[40%] h-[81vh] flex items-center  mx-auto">
       <div className='w-full p-6 rounded-lg shadow-md bg-gray-800  border border-gray-100'>
-        <h1 className='text-3xl font-bold text-center'>Signup</h1>
+        <h1 className='text-3xl font-bold text-white text-center'>Signup</h1>
         <form onSubmit={onSubmitHandler} action="">
 
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Full Name</span>
+              <span className='text-base text-white label-text'>Full Name</span>
             </label>
             <input
               value={user.fullname}
@@ -70,7 +70,7 @@ const Signup = () => {
 
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Username</span>
+              <span className='text-base text-white label-text'>Username</span>
             </label>
             <input
               value={user.nickName}
@@ -82,7 +82,7 @@ const Signup = () => {
 
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Email</span>
+              <span className='text-base text-white label-text'>Email</span>
             </label>
             <input
               value={user.email}
@@ -94,7 +94,7 @@ const Signup = () => {
 
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Password</span>
+              <span className='text-base text-white label-text'>Password</span>
             </label>
             <input
               value={user.password}
@@ -105,8 +105,8 @@ const Signup = () => {
           </div>
 
           <div className='flex items-center my-4'>
-            <div className='flex items-center'>
-              <p>Male</p>
+            <div className='flex  items-center'>
+              <p className='text-white'>Male</p>
               <input
                 type="radio"
                 name="gender"
@@ -115,7 +115,7 @@ const Signup = () => {
                 className="mx-2" />
             </div>
             <div className='flex items-center'>
-              <p>Female</p>
+              <p className='text-white'>Female</p>
               <input
                 type="radio"
                 name="gender"
