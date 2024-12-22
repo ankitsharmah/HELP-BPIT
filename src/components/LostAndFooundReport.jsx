@@ -15,7 +15,7 @@ const LostAndFoundReport = () => {
   const { allReports } = useSelector((store) => store.reports);
   const { isLoadingReports } = useSelector((store) => store.reports);
   const { filterData } = useSelector((store) => store.reports);
-
+  const {authUser} = useSelector(store=>store.user)
   const [filteredReports, setFilteredReports] = useState([]);
 
   const [formData, setFormData] = useState({
@@ -62,6 +62,11 @@ const LostAndFoundReport = () => {
   };
 
   const handleSubmit = async (e) => {
+
+    if(!authUser){
+      alert("please login to report an item")
+    }
+
     e.preventDefault();
     console.log("Submitted data:", formData);
     setAddReport(true);
