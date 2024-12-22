@@ -288,7 +288,7 @@ const LostAndFoundReport = () => {
                   value={formData.itemType}
                   onChange={handleChange}
                   required
-                  className="border text-black bg-white p-2 rounded w-full"
+                  className="border  text-black bg-white p-2 rounded w-full"
                 />
               </div>
               <div>
@@ -305,7 +305,7 @@ const LostAndFoundReport = () => {
                   value={formData.location}
                   onChange={handleChange}
                   required
-                  className="border p-2 rounded w-full"
+                  className="border   text-black bg-white p-2 rounded w-full"
                 />
               </div>
               <div>
@@ -322,7 +322,7 @@ const LostAndFoundReport = () => {
                   value={formData.specification}
                   onChange={handleChange}
                   required
-                  className="border p-2 rounded w-full"
+                  className="border  text-black bg-white p-2 rounded w-full"
                 />
               </div>
               <div>
@@ -338,7 +338,7 @@ const LostAndFoundReport = () => {
                   value={formData.category}
                   onChange={handleChange}
                   required
-                  className="border p-2 rounded w-full"
+                  className="border  text-black bg-white p-2 rounded w-full"
                 >
                   <option value="" disabled selected>
                     Select a category
@@ -364,7 +364,7 @@ const LostAndFoundReport = () => {
                   onChange={handleChange}
                   required
                   max={today}
-                  className="border p-2 bg-[#474646] rounded w-full"
+                  className="border  text-black bg-white p-2  rounded w-full"
                 />
               </div>
               <div>
@@ -381,7 +381,7 @@ const LostAndFoundReport = () => {
                   value={formData.contact}
                   onChange={handleChange}
                   required
-                  className="border p-2 rounded w-full"
+                  className="border  text-black bg-white p-2 rounded w-full"
                 />
               </div>
               <div className="mt-3 mb-3 flex  ">
