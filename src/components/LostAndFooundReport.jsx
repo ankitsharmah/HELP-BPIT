@@ -65,6 +65,7 @@ const LostAndFoundReport = () => {
 
     if(!authUser){
       alert("please login to report an item")
+      setIsReporting(false)
     }
 
     e.preventDefault();
