@@ -94,7 +94,7 @@ const Login = () => {
 
           <div>
             <label className='label p-2'>
-              <span className='text-base label-text'>Username</span>
+              <span className='text-base text-white label-text'>Username</span>
             </label>
             <input
               value={user.email}
