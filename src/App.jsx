@@ -77,6 +77,7 @@ import LostAndFound from "./components/LostAndFound";
 import UserProfile from "./components/UserProfile";
 import LostAndFoundReport from "./components/LostAndFooundReport";
 import useGetReports from "./hooks/useGetReports";
+import Profile from "./components/Profile";
 function App() {
     useKeepUserLoggedIn();
     useGetReports();
@@ -129,7 +130,8 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/profile" element={<UserProfile />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/u/:id" element={<UserProfile />} />
                 <Route path="/one-to-one" element={<MessageContainer />} />
                 <Route path="/open-forum" element={<OpenChatForum />} />
                 <Route path="/item/:id" element={<LostAndFound />} />

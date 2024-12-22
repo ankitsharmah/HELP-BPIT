@@ -1,25 +1,21 @@
-import React, { useState } from "react";
+
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setAuthUser, setIsloggedin } from "../redux/userSlice";
-// import { addFriend } from "../redux/friendsSlice"; // Make sure to implement addFriend action in your redux slice.
 
-const UserProfile = () => {
+const Profile = () => {
   const dispatch = useDispatch();
   const { allReports } = useSelector((store) => store.reports);
   const { authUser } = useSelector((store) => store.user);
   const navigate = useNavigate();
-  const [isFriend, setIsFriend] = useState(false); // Track if the user is a friend
 
-  // Function to handle adding a friend
-  const handleAddFriend = () => {
-    // Dispatch action to add the friend (ensure the addFriend logic is in your Redux)
-    dispatch(addFriend(authUser._id)); // Pass the logged-in user ID to add a friend
-    setIsFriend(true); // Mark as friend after action
+  const handleLogout = () => {
+    localStorage.removeItem('token')
+    dispatch(setAuthUser(null));
+    dispatch(setIsloggedin(false));
+    navigate("/")
   };
-
-  // Logic to check if the user is already a friend
-  const isAlreadyFriend = authUser?.friends?.includes(authUser._id);
 
   const foundItems = allReports
     ? allReports.filter(
@@ -115,23 +111,12 @@ const UserProfile = () => {
                   Member since:{" "}
                   {new Date(authUser.createdAt).toLocaleDateString()}
                 </p>
-
-                {/* Add Friend Button or Already Friend */}
-                {isAlreadyFriend ? (
-                  <button
-                    className="mt-4 px-4 py-2 bg-gray-500 text-white font-semibold rounded-md"
-                    disabled
-                  >
-                    Already Friend
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleAddFriend}
-                    className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md"
-                  >
-                    Add Friend
-                  </button>
-                )}
+                <button
+                  onClick={handleLogout}
+                  className="mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-md"
+                >
+                  Logout
+                </button>
               </div>
             </div>
 
@@ -157,7 +142,7 @@ const UserProfile = () => {
 
           {/* Reported Items Section */}
           <div className="bg-gray-900 rounded-lg shadow-lg p-6 mt-8">
-            <h2 className="text-2xl font-bold mb-4">{authUser.fullname} Reported Items</h2>
+            <h2 className="text-2xl font-bold mb-4">Your Reported Items</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Found Section */}
               <div>
@@ -242,4 +227,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default Profile;

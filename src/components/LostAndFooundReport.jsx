@@ -34,13 +34,13 @@ const LostAndFoundReport = () => {
       if (filterData.category || filterData.date || filterData.status) {
         const newFilteredReports = allReports.filter((report) => {
           const matchesCategory = filterData.category
-            ? report.category === filterData.category
+            ? report.category.toLowerCase() === filterData.category.toLowerCase()
             : true;
           const matchesDate = filterData.date
-            ? report.foundOn === filterData.date
+            ? report.foundOn.toLowerCase() === filterData.date.toLowerCase()
             : true;
           const matchesStatus = filterData.status
-            ? report.reportStatus === filterData.status
+            ? report.reportStatus.toLowerCase() === filterData.status.toLowerCase()
             : true;
           return matchesCategory && matchesDate && matchesStatus;
         });
@@ -200,7 +200,7 @@ const LostAndFoundReport = () => {
             className={` space-y-4 w-full h-[65vh] md:h-[460px] outline outline-[0.1px] rounded-lg p-2 overflow-y-scroll`}
           >
             {isLoadingReports ? (
-              <div className="flex flex-col gap-3">
+              <div className="flex animate-pulse flex-col gap-3">
               {[...Array(10)].map((_, index) => (
                   <div
                     key={index}

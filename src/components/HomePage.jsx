@@ -37,12 +37,6 @@ const HomePage = () => {
 
       <div className=' bg-yellow-5 py-3  containerr min-h-[173px]  flex flex-col '>
 
-        {/* <h1 className='text-center pb-2 text-xl font-bold text-white '>Latest Found</h1> */}
-
-        {/* <LostFoundDisplay /> */}
-
-        {/* <h1 className='text-center pb-2 text-xl font-bold text-white '>Latest Lost </h1> */}
-
         <LostFoundDisplay />
       </div>
     
@@ -84,7 +78,7 @@ const HomePage = () => {
           <PiNewspaper className="text-4xl h-12  w-16  font-bold  text-center text-[2B2B2B]"/>
           <h3 className=' text-[1.5rem] text-center  font-bold p-1'>News</h3>
           </div>
-      <p className='md:text-base text-xs  md:text-center   text-wrap '>Know latest opening at Alumini work place</p>
+      <p className='md:text-base text-xs  md:text-center   text-wrap '>Know latest opening at Alumni work place</p>
     
       </div>
 
@@ -99,6 +93,27 @@ const HomePage = () => {
       </div>
 
     </div>
+
+  
+      {/* Featured Updates Section */}
+      <div className='bg-[#457B9D] text-white p-6 mt-6 rounded-lg'>
+        <h2 className='text-2xl font-bold mb-4'>Featured Updates</h2>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+          <div className='bg-[#A8DADC] p-4 rounded-lg'>
+            <h3 className='font-bold'>New Book Arrivals</h3>
+            <p>Check out the latest additions to the library.</p>
+          </div>
+          <div className='bg-[#F4A261] p-4 rounded-lg'>
+            <h3 className='font-bold'>Alumni Webinar</h3>
+            <p>Join our webinar with successful alumni.</p>
+          </div>
+          <div className='bg-[#E63946] p-4 rounded-lg'>
+            <h3 className='font-bold'>Placement Drives</h3>
+            <p>Don’t miss out on upcoming placement sessions.</p>
+          </div>
+        </div>
+      </div>
+
      
     {/* <BookQuotesSlider /> */}
     <Footer />
