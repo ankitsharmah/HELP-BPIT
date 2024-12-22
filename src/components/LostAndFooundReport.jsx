@@ -288,7 +288,7 @@ const LostAndFoundReport = () => {
                   value={formData.itemType}
                   onChange={handleChange}
                   required
-                  className="border p-2 rounded w-full"
+                  className="border text-black bg-white p-2 rounded w-full"
                 />
               </div>
               <div>
