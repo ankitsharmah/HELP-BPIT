@@ -5,7 +5,8 @@ const messageSlice = createSlice({
     initialState:{
         messages:[],
         isLoading:false,
-        openChats:null
+        openChats:null,
+        isServerStarting:true,
     },
     reducers:{
         setMessages:(state,action)=>{
@@ -15,6 +16,9 @@ const messageSlice = createSlice({
         },
         setOpenMessages:(state,action)=>{
             state.openChats = action.payload;
+        },
+        setIseServerLoading:(state,action)=>{
+            state.isServerStarting=action.payload;
         }
         ,
         setIsLoading:(state,action)=>{
@@ -23,5 +27,5 @@ const messageSlice = createSlice({
         }
     }
 });
-export const {setMessages,setOpenMessages,setIsLoading} = messageSlice.actions;
+export const {setMessages,setOpenMessages,setIsLoading,setIseServerLoading} = messageSlice.actions;
 export default messageSlice.reducer;
