@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import MessageContainer from './MessageContainer'
 import { useSelector } from 'react-redux'
@@ -14,16 +14,47 @@ import useKeepUserLoggedIn from '../hooks/useKeepUserLoggedIn'
 // import LostAndFoundDisplay from './LostAndFoundDisplay'
 import { LostFoundDisplay } from './LostFoundDisplay'
 import useGetReports from '../hooks/useGetReports'
+import axios from 'axios'
+import { BASE_URL } from '../main'
+import { BiLoader } from 'react-icons/bi'
 
 const HomePage = () => {
   // useGetOtherUsers();
   const navigate = useNavigate();
+  const[isStartingServer,setIsstartingServer] = useState(true);
   // useKeepUserLoggedIn(navigate)
   // useGetReports();
   // const navigate = useNavigate()
+
+  useEffect(()=>{
+      async function loader (){
+              try {
+
+                const res = await axios.get(BASE_URL);
+                if(res.data.success){
+                    setIsstartingServer(false);
+                }
+
+              } catch (error) {
+                console.log(error)
+              }
+      }
+      loader();
+  },[])
  
-  return (
-    <div className='p-1 bg-[#121926] md:p-7'>
+  return (<>
+
+   {
+    isStartingServer ? <div className='h-[100vh] z-50 top-0 left-0 fixed w-full bg-gray-600/80 flex items-center justify-center text-red-600'>
+    <div className='h-20 w-64 flex items-center justify-center rounded outline outline-[#43ff49] '>
+      <p className=' text-[#43ff49] font-bold text-xl animate-bounce'>
+      plese wait server is starting 
+      </p>
+
+    </div>
+    </div> :"" 
+   }
+   <div className='p-1 bg-[#121926] md:p-7'>
     
     <div className='h-[25vh] md:h-[50vh] w-full '>
       <img src={homePage} alt="" className=' w-full h-full object-cover'/>
@@ -120,6 +151,7 @@ const HomePage = () => {
 
 
     </div>
+  </>
   )
 }
 
