@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from './Sidebar'
 import MessageContainer from './MessageContainer'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import OpenChatForum from './OpenChatForum'
 import homePage from '../assets/bg-pic-bpit.png'
@@ -17,11 +17,13 @@ import useGetReports from '../hooks/useGetReports'
 import axios from 'axios'
 import { BASE_URL } from '../main'
 import { BiLoader } from 'react-icons/bi'
+import { setIseServerLoading } from '../redux/messageSlice'
 
 const HomePage = () => {
   // useGetOtherUsers();
   const navigate = useNavigate();
-  const[isStartingServer,setIsstartingServer] = useState(true);
+  const dispatch = useDispatch();
+  const {isServerStarting} = useSelector(store=>store.message)
   // useKeepUserLoggedIn(navigate)
   // useGetReports();
   // const navigate = useNavigate()
@@ -29,11 +31,16 @@ const HomePage = () => {
   useEffect(()=>{
       async function loader (){
               try {
-
-                const res = await axios.get(BASE_URL);
-                if(res.data.success){
-                    setIsstartingServer(false);
+                if(isServerStarting){
+                  const res = await axios.get(BASE_URL);
+                  if(res.data.success){
+                      dispatch(setIseServerLoading(false));
+                  }
                 }
+                    else{
+                      return;
+                    }
+               
 
               } catch (error) {
                 console.log(error)
@@ -45,10 +52,10 @@ const HomePage = () => {
   return (<>
 
    {
-    isStartingServer ? <div className='h-[100vh] z-50 top-0 left-0 fixed w-full bg-gray-600/80 flex items-center justify-center text-red-600'>
-    <div className='h-20 w-64 flex items-center justify-center rounded outline outline-[#43ff49] '>
+    isServerStarting ? <div className='h-[100vh] z-50 top-0 left-0 fixed w-full bg-gray-600/80 flex items-center justify-center text-red-600'>
+    <div className='h-20 w-72 md:w-80 flex items-center justify-center rounded outline outline-[#43ff49] '>
       <p className=' text-[#43ff49] font-bold text-xl animate-bounce'>
-      plese wait server is starting 
+      please wait server is starting 
       </p>
 
     </div>
