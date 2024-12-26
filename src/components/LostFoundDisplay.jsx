@@ -133,7 +133,7 @@ export function LostFoundDisplay() {
   // useGetReports();
   const navigate = useNavigate();
   const {allReports,isLoadingReports} = useSelector(store=>store.reports)
-  const items = allReports.slice(0,5 );
+  const items = allReports.slice(3,8 );
 
   return (
     <div className=" h-full overflow-x-scroll containerr">

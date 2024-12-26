@@ -20,47 +20,10 @@ import { BiLoader } from 'react-icons/bi'
 import { setIseServerLoading } from '../redux/messageSlice'
 
 const HomePage = () => {
-  // useGetOtherUsers();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const {isServerStarting} = useSelector(store=>store.message)
-  // useKeepUserLoggedIn(navigate)
-  // useGetReports();
-  // const navigate = useNavigate()
-
-  useEffect(()=>{
-      async function loader (){
-              try {
-                if(isServerStarting){
-                  const res = await axios.get(BASE_URL);
-                  if(res.data.success){
-                      dispatch(setIseServerLoading(false));
-                  }
-                }
-                    else{
-                      return;
-                    }
-               
-
-              } catch (error) {
-                console.log(error)
-              }
-      }
-      loader();
-  },[])
+    const navigate = useNavigate();
  
   return (<>
 
-   {
-    isServerStarting ? <div className='h-[100vh] z-50 top-0 left-0 fixed w-full bg-gray-600/80 flex items-center justify-center text-red-600'>
-    <div className='h-20 w-72 md:w-80 flex items-center justify-center rounded outline outline-[#43ff49] '>
-      <p className=' text-[#43ff49] font-bold text-xl animate-bounce'>
-      please wait server is starting 
-      </p>
-
-    </div>
-    </div> :"" 
-   }
    <div className='p-1 bg-[#121926] md:p-7'>
     
     <div className='h-[25vh] md:h-[50vh] w-full '>
