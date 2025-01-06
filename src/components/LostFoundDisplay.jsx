@@ -161,7 +161,7 @@ export function LostFoundDisplay() {
           {items.map((item, idx) => (
             <div
               key={idx}
-              className="min-w-[12rem] md:w-[30%] bg-[#18192f] text-white rounded-2xl p-2 cursor-pointer border-[.2px] border-white hover:bg-opacity-20 transform transition duration-300"
+              className="min-w-[12rem] md:w-[30%] min-h-[9.5rem]  bg-[#18192f] text-white rounded-2xl p-2 cursor-pointer border-[.2px] border-white hover:bg-opacity-20 transform transition duration-300"
               onClick={() => {
                 navigate(`/item/${item._id}`);
               }}
