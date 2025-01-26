@@ -88,8 +88,12 @@ const Header = () => {
                     <li className="hover:underline  hover:decoration-black cursor-pointer"><NavLink to={"/"}> 
                 Home
                 </NavLink></li>
-                    <li className="hover:underline hover:decoration-black cursor-pointer">Open Forum</li>
-                    <li className="hover:underline hover:decoration-black cursor-pointer">Lost & Found</li>
+                    <li className="hover:underline hover:decoration-black cursor-pointer" onClick={()=>{
+                      navigate("/open-forum")
+                    }}>Open Forum</li>
+                    <li className="hover:underline hover:decoration-black cursor-pointer" onClick={()=>{
+                      navigate("/lost-found")
+                    }}>Lost & Found</li>
                     {
                         isLoggedin ? <NavLink to={"/profile" } className={"hover:underline  hover:decoration-black cursor-pointer"} onClick={()=>setOpen(false)}>Profile</NavLink>:<div>
                             <NavLink to={"/login"} className={"mr-1 "}>sign in</NavLink>
