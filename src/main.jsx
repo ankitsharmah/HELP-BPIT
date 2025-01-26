@@ -12,8 +12,8 @@ import Header from './shared/Header.jsx';
 import { setIseServerLoading } from './redux/messageSlice.js';
 // import { setIseServerLoading } from './redux/slices/messageSlice'; // Assuming the action is defined in your redux slices
 
-// export const BASE_URL = "https://help-bipit-api-zkbh.onrender.com";
-export const BASE_URL = "http://localhost:9191";
+export const BASE_URL = "https://help-bipit-api-zkbh.onrender.com";
+// export const BASE_URL = "http://localhost:9191";
 
 const RootComponent = () => {
   const navigate = useNavigate();
